@@ -1,0 +1,157 @@
+html{
+  overflow: hidden;
+  height: 100%;
+  background-color: #EEEEEE;
+}
+
+header{
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  width: 100%;
+  background-color: white;
+  z-index: 1;
+  border-top: 2px solid #510c76;
+  border-bottom: 2px solid #510c76;;
+}
+
+main{
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+.background{
+  fill: #EEEEEE;
+}
+
+.building {
+  fill: #bbbbbb;
+  stroke: black;
+  stroke-width: 0.5;
+}
+
+.buildingShadow {
+  fill: #999999;
+  stroke: black;
+  stroke-width: 0.5;
+}
+
+.structure:hover .building {
+  fill: green;
+}
+
+.structure:hover .buildingShadow {
+  fill: darkgreen;
+}
+
+.sourceActive .building, .sourceActive .lot {
+  fill: green;
+}
+
+.sourceActive .buildingShadow {
+  fill: darkgreen;
+}
+
+.destinationActive .building,
+.destinationActive .lot {
+  fill: red;
+}
+
+.destinationActive .buildingShadow {
+  fill: maroon;
+}
+
+
+.path {
+  fill: none;
+  stroke: white;
+}
+
+.pathOutline {
+  fill: none;
+  stroke: black;
+}
+
+.lot {
+  fill: white;
+  stroke: black;
+  stroke-width: 0.5;
+}
+
+.lot:hover {
+  fill: green;
+}
+
+.route {
+  fill: none;
+  stroke: lightseagreen;
+  stroke-width: 2;
+}
+
+fieldset {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: none;
+}
+
+fieldset>*{
+  margin-right: 20px;
+  padding: 5px;
+}
+
+select{
+  color: #510c76;
+  font-weight: bold;
+  font-size: 12pt;
+  border: none;
+  border-radius: 4px;
+  padding: 10px;
+  appearance: none;
+}
+
+input[type="submit"], input[type="reset"]{
+  border: none;
+  color: #510c76;
+  padding: 8px;
+  background-color: white;
+  font-weight: bold;
+  font-size: 12pt;
+  border: 1px solid #510c76;
+}
+
+select:focus {
+ outline: none;
+}
+
+.sidebar{
+  position: fixed;
+  z-index: 1;
+  right: 15px;
+  top: 75px;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border: 2px solid #510c76;
+}
+
+.sidebar *{
+  font-weight: bold;
+  font-size: 25pt;
+  color: #510c76;
+  padding: 18px;
+  margin: 0px;
+  background-color: white;
+  border: none;
+}
+
