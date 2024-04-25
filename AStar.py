@@ -2,6 +2,7 @@ import svgpathtools as pathTools
 import math
 import sys
 import Nodes
+import json
 
 class Node:
     def __init__(self, path, position, pathLen, heuristicLen):
@@ -18,8 +19,8 @@ class Node:
         return self.position == other.position
 
 class AStarSearch:
-    def __init__(self):
-        self.nodes = Nodes.nodes
+    def __init__(self, nodeSet):
+        self.nodes = nodeSet
         self.discovered = []
         self.visited = []
 
@@ -46,7 +47,9 @@ class AStarSearch:
                 if currentNode.position == i:
                     #print(pathTools.parse_path(currentNode.path).length())
                     return currentNode.path
-            
+
+            print(currentNode.path)
+            print(currentNode.position)
             for i in self.nodes[currentNode.position]:
                 path = currentNode.path + str(i) + ' '
                 
@@ -80,8 +83,29 @@ class AStarSearch:
 
 
 if __name__ == '__main__':        
-    new = AStarSearch()
-    print(new.search(sys.argv[1], sys.argv[2]))
+    nodeSet = Nodes.nodes
+    source = sys.argv[1]
+    dest = sys.argv[2]
+    if sys.argv[3] != '-1':
+        newBuilding = sys.argv[1] + 'Nodes'
+        newBuilding = newBuilding.replace(" ", "")
+        buildingNodes = __import__(newBuilding)
+        nodeSet.update(buildingNodes.nodes)
+        source = sys.argv[3]
+        
+    if sys.argv[4] != '-1':
+        dest = sys.argv[4]
+        if sys.argv[1] != sys.argv[2]:
+            newBuilding = sys.argv[2] + 'Nodes'
+            newBuilding = newBuilding.replace(" ", "")
+            buildingNodes = __import__(newBuilding)
+            nodeSet.update(buildingNodes.nodes)
+
+        
+    new = AStarSearch(nodeSet)
+    route = new.search(source, dest)
+    dist = pathTools.parse_path(route).length()
+    print(json.dumps((route, dist)))
 
 #key = '428,487'
 #best = dpShortest(nodes, 'M' + key +'l0,0', [], "Mcclain")
@@ -89,12 +113,12 @@ if __name__ == '__main__':
 
 #for key in nodes:
 #   for i in nodes[key]:
-#        path = draw.Path(d='M0,0' + i, stroke='navy', stroke_width=2, fill='none', transform='translate(' + key + ')')
+#        path = draw.Path(d='M0,0' + i, stroke='navy', stroke_width=2, fill='none', transform='translate' + key + '')
 #        d.append(path)
 
 #for key in nodes:
-#    d.append(draw.Circle(0, 0, 2, fill='red', stroke='none', transform='translate(' + key + ')'))
-#path = draw.Path(d=best, stroke='navy', stroke_width=2, fill='none', transform='translate(' + key + ')')
+#    d.append(draw.Circle(0, 0, 2, fill='red', stroke='none', transform='translate' + key + ''))
+#path = draw.Path(d=best, stroke='navy', stroke_width=2, fill='none', transform='translate' + key + '')
 
 
 

@@ -1,72 +1,287 @@
-html{
-  overflow: hidden;
-  height: 100%;
-  background-color: #EEEEEE;
+@font-face {
+  font-family: 'Hurme Geometric Sans 1 Bold';
+  src: url('HurmeGeometricSans1 Bold.otf') format('truetype');
 }
 
-header{
+html {
+  height: 100%;
+  background-color: #DDDDDD;
+  font-family: 'Hurme Geometric Sans 1 Bold', sans-serif;
+}
+
+.earth{
+  background-color: #999999;
+}
+
+#source,
+#destination {
   position: fixed;
-  top: 0px;
-  left: 0px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  top: 10px;
+  width: 42%;
+  height: 9%;
+  z-index: 2;
+  margin: 0px;
+  border: 2px solid white;
+  box-shadow: 0px 6px 10px 0px #555555;
+}
+
+#source{
+  left: -50%;
+  border-radius: 0px 20px 20px 0px;
+  background-image: linear-gradient(to right, #510c76, #792da2);
+  justify-content: flex-start;
+  animation: flyInAnimation 1s forwards;
+}
+
+.destinationResult{
+  right: -50%;
+  animation: flyInRight 1s forwards;
+}
+
+
+/* Define the keyframes for the animation */
+@keyframes flyInAnimation {
+  from {
+    left: -50%; /* Move from the top of the screen */
+  }
+  to {
+    left: 0; /* Move to the top of the screen */
+  }
+}
+
+/* Define the keyframes for the animation */
+@keyframes flyInRight {
+  from {
+    right: -50%; /* Move from the top of the screen */
+  }
+  to {
+    right: 0; /* Move to the top of the screen */
+  }
+}
+
+#destination {
+  border-radius: 20px 0px 0px 20px;
+  background-image: linear-gradient(to right, #b48f52, #87714D);
+  justify-content: flex-end;
+  transition: right 1s ease;
+}
+
+.destinationHide{
+  right:-50%;
+}
+
+.destinationTransition{
+  right: 0;
+}
+
+#sourceSelect,
+#destinationSelect {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0 auto;
+}
+
+#source h1,
+#destination h1 {
+  color: white;
+  font-size: 27pt;
+}
+
+#source h1{
+  margin-left: 30px;
+}
+
+#destination h1{
+  margin-right: 30px;
+}
+
+#source h2, #destination h2{
+  color: white;
+  margin: 15px;
+  font-size: 20pt;
+}
+
+select {
+  font-family: 'Hurme Geometric Sans 1 Bold', sans-serif;
+  color: white;
+  background-color: transparent;
+  height: 30px;
+  font-size: 11pt;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-inline: 15px;
+}
+
+option{
+  color: #510c76;
+}
+
+#buttons, #distance {
+  position: fixed;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  height: 60px;
-  width: 100%;
-  background-color: white;
-  z-index: 1;
-  border-top: 2px solid #510c76;
-  border-bottom: 2px solid #510c76;;
+  z-index: 3;
+  margin: 0px;
+  padding: 0px;
 }
 
+#buttons{
+  width: 16%;
+  left: 42%;
+  height: 9%;
+  top: 10px;
+}
+
+#distance{
+  bottom: 10px;
+}
+
+#buttons>*, #distance>*{
+  font-family: 'Hurme Geometric Sans 1 Bold', sans-serif;
+  border: none;
+  color: white;
+  background-color: #666666;
+  padding: 8px;
+  margin: 4px;
+  font-weight: bold;
+  font-size: 12pt;
+  border: 2px solid white;
+  border-radius: 5px;
+  box-shadow: 0px 6px 10px -2px #555555;
+}
+
+#buttons>*{
+  width: 35%;
+  min-width: 50px;
+  cursor: pointer;
+}
+
+#distance>*{
+  font-size: 15pt;
+}
+
+#buttons>*:hover{
+background-color: #444444;
+}
+
+.earth #buttons>*, .earth .sidebar, .earth #distance>*{
+  background-color: #444444;
+}
+
+.earth #buttons>*:hover, .earth .sidebar>*:active{
+  background-color: #222222;
+}
+
+.hideElement{
+  display: none;
+}
+
+
 main{
-  margin-top: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow: hidden;
+}
+
+#page main{
+  margin-top: 100px;
+}
+
+#result main{
+  margin-top: 108px;
+}
+
+svg{
+  z-index: 1;
+  margin-bottom: 40px;
+}
+
+fieldset{
+padding: 0px;
+}
+
+.earth .path, .earth .block, .earth .buildingShadow, .earth .dummyShadow{
+  opacity: 0%;
+}
+
+.earth .building, .earth .lot, .earth .dummy{
+  fill: rgba(0,0,0,0);
+  stroke: none;
+  opacity: 60%;
+}
+
+.earth .classroom, .earth .dummyClass{
+  opacity: 75%;
+}
+
+img{
+  position: absolute;
+  z-index: 0;
+  display: none;
+}
+
+.earth img{
+  display:block;
+  box-shadow: 0px 10px 10px 10px #555555;
+}
+
+
+.earth .background {
+  fill: none;
 }
 
 .background{
-  fill: #EEEEEE;
+  fill: #DDDDDD;
 }
 
-.building {
-  fill: #bbbbbb;
+#page .structure, #page .lot, #page .classroom{
+  cursor: pointer;
+}
+
+.building, .dummy {
+  fill: url(#buildingGradient);
   stroke: black;
   stroke-width: 0.5;
 }
 
-.buildingShadow {
-  fill: #999999;
+.buildingShadow, .dummyShadow {
+  fill: url(#buildingShadowGradient);
   stroke: black;
   stroke-width: 0.5;
 }
 
-.structure:hover .building {
-  fill: green;
+#page .structure:hover .buildingShadow, #page .lot:hover, #page .structure:hover .building{
+  stroke: #00A8E2;
+  stroke-width: 1;
 }
 
-.structure:hover .buildingShadow {
-  fill: darkgreen;
-}
-
-.sourceActive .building, .sourceActive .lot {
-  fill: green;
+.sourceActive .building, .earth .sourceActive .building,
+.sourceActive .lot, .earth .sourceActive .lot{
+  fill: url(#sourceGradient);
+  stroke:#00A8E2;
 }
 
 .sourceActive .buildingShadow {
-  fill: darkgreen;
+  fill: #320e45;
+  stroke:#00A8E2;
 }
 
-.destinationActive .building,
-.destinationActive .lot {
-  fill: red;
+.destinationActive .building, .earth .destinationActive .building,
+.destinationActive .lot, .earth .destinationActive .lot {
+  fill: url(#destinationGradient);
+  stroke:#00A8E2;
 }
 
 .destinationActive .buildingShadow {
-  fill: maroon;
+  fill: #57462a;
+  stroke:#00A8E2;
 }
 
 
@@ -75,83 +290,93 @@ main{
   stroke: white;
 }
 
-.pathOutline {
-  fill: none;
-  stroke: black;
-}
-
-.lot {
+.block{
   fill: white;
-  stroke: black;
-  stroke-width: 0.5;
+  stroke: none;
 }
 
-.lot:hover {
-  fill: green;
+.pathOutline{
+  fill: none;
+  stroke: none;
+}
+
+.blockOutline{
+  stroke: none;
+  fill: none;
+  stroke-width: 0.4;
+}
+
+.lot{
+  fill: white;
+}
+
+text{
+  font-size: 2pt;
+  fill: #00A8E2;
 }
 
 .route {
   fill: none;
-  stroke: lightseagreen;
-  stroke-width: 2;
+  stroke: none;
+}
+
+.routeBubbles{
+stroke:#00A8E2;
+stroke-width: 2;
+fill:none;
 }
 
 fieldset {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
   border: none;
   background-color: none;
 }
 
-fieldset>*{
-  margin-right: 20px;
-  padding: 5px;
-}
-
-select{
-  color: #510c76;
-  font-weight: bold;
-  font-size: 12pt;
-  border: none;
-  border-radius: 4px;
-  padding: 10px;
-  appearance: none;
-}
-
-input[type="submit"], input[type="reset"]{
-  border: none;
-  color: #510c76;
-  padding: 8px;
-  background-color: white;
-  font-weight: bold;
-  font-size: 12pt;
-  border: 1px solid #510c76;
-}
-
 select:focus {
- outline: none;
+  outline: none;
 }
 
-.sidebar{
+.sidebar {
   position: fixed;
-  z-index: 1;
-  right: 15px;
-  top: 75px;
+  z-index: 2;
+  left: 15px;
+  top: 100px;
   display: flex;
   flex-direction: column;
-  background-color: white;
-  border: 2px solid #510c76;
+  background-color: #666666;
+  box-shadow: 0px 6px 10px -2px #555555;
+  border: 2px solid white;
+
 }
 
-.sidebar *{
-  font-weight: bold;
+.sidebar * {
+  background-color: transparent;
+  font-weight: bolder;
   font-size: 25pt;
-  color: #510c76;
+  color: white;
   padding: 18px;
   margin: 0px;
-  background-color: white;
   border: none;
 }
 
+.sidebar *:active{
+  background-color:#444444;
+}
+
+.classroom, .dummyClass {
+  fill: url(#classroomGradient);
+  stroke-width: 0.3;
+}
+
+#page .classroom:hover {
+  stroke: #00A8E2;
+}
+
+.sourceClassActive{
+  fill: url(#sourceGradient);
+  stroke:#00A8E2;
+}
+
+.destinationClassActive{
+  fill: url(#destinationGradient);
+  stroke:#00A8E2;
+}
