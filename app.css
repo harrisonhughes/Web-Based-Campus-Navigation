@@ -1,157 +1,465 @@
-html{
-  overflow: hidden;
-  height: 100%;
-  background-color: #EEEEEE;
+@font-face {
+  font-family: "Hurme Geometric Sans 1 Bold";
+  src: url("HurmeGeometricSans1 Bold.otf") format("truetype");
 }
 
-header{
+/**Main structural element styles*/
+html {
+  height: 100%;
+  background-image: linear-gradient(90deg, #d8cedc, #d5cab9); 
+  background-attachment: fixed;
+  font-family: "Hurme Geometric Sans 1 Bold", sans-serif;
+}
+
+.earth {
+  background-image: none;
+  background-color: #999999;
+}
+
+/**Header block styling*/
+fieldset {
+  border: none;
+  background-color: none;
+  padding: 0px;
+}
+
+#source,
+#destination {
   position: fixed;
-  top: 0px;
-  left: 0px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  top: 10px;
+  width: 42%;
+  height: 70px;
+  z-index: 2;
+  margin: 0px;
+  border: 2px solid white;
+  box-shadow: 0px 6px 10px 0px #555555;
+}
+
+#source {
+  left: -50%;
+  border-radius: 0px 20px 20px 0px;
+  background-image: linear-gradient(to right, #510c76, #8a3cb5);
+  justify-content: flex-start;
+  animation: flyInAnimation 1s forwards;
+}
+
+.destinationResult {
+  right: -50%;
+  animation: flyInRight 1s forwards;
+}
+
+/* Define the keyframes for the animation */
+@keyframes flyInAnimation {
+  from {
+    left: -50%; /* Move from the top of the screen */
+  }
+  to {
+    left: 0; /* Move to the top of the screen */
+  }
+}
+
+/* Define the keyframes for the animation */
+@keyframes flyInRight {
+  from {
+    right: -50%; /* Move from the top of the screen */
+  }
+  to {
+    right: 0; /* Move to the top of the screen */
+  }
+}
+
+#destination {
+  border-radius: 20px 0px 0px 20px;
+  background-image: linear-gradient(to right, #b48f52, #87714d);
+  justify-content: flex-end;
+  transition: right 1s ease;
+}
+
+.destinationHide {
+  right: -50%;
+}
+
+.destinationTransition {
+  right: 0;
+}
+
+#sourceSelect,
+#destinationSelect {
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+}
+
+#source h1,
+#destination h1 {
+  color: white;
+  font-size: 27pt;
+}
+
+#source h1 {
+  margin-left: 30px;
+}
+
+#destination h1 {
+  margin-right: 30px;
+}
+
+#source h2,
+#destination h2 {
+  color: white;
+  margin: 15px;
+  font-size: 20pt;
+}
+
+select {
+  font-family: "Hurme Geometric Sans 1 Bold", sans-serif;
+  color: white;
+  background-color: transparent;
+  height: 30px;
+  font-size: 13pt;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-inline: 8px;
+  padding-inline: 5px 8px;
+}
+
+select:focus {
+  outline: none;
+}
+
+option {
+  color: white;
+}
+
+.optionHeader {
+  color: #00a8e2;
+  text-align: center;
+}
+
+#destinationSelect option {
+  background-color: #87714d;
+}
+
+#sourceSelect option {
+  background-color: #510c76;
+}
+
+
+/**Header buttons, sidebar buttons, and distance block styles*/
+#buttons,
+#distance {
+  position: fixed;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  height: 60px;
-  width: 100%;
-  background-color: white;
-  z-index: 1;
-  border-top: 2px solid #510c76;
-  border-bottom: 2px solid #510c76;;
+  z-index: 3;
+  margin: 0px;
+  padding: 0px;
 }
 
-main{
-  margin-top: 50px;
+#buttons {
+  width: 16%;
+  left: 42%;
+  height: 9%;
+  top: 10px;
+}
+
+#distance {
+  bottom: 10px;
+}
+
+#distance,
+.sidebar {
+  opacity: 85%;
+}
+
+#buttons > *,
+#distance > * {
+  font-family: "Hurme Geometric Sans 1 Bold", sans-serif;
+  border: none;
+  color: white;
+  background-color: #666666;
+  padding: 8px;
+  margin: 4px;
+  font-weight: bold;
+  font-size: 12pt;
+  border: 2px solid white;
+  border-radius: 5px;
+  box-shadow: 0px 6px 10px -2px #555555;
+}
+
+#buttons > * {
+  width: 35%;
+  min-width: 50px;
+  cursor: pointer;
+}
+
+#distance > * {
+  font-size: 15pt;
+}
+
+#buttons > *:hover {
+  background-color: #444444;
+}
+
+.earth #buttons > *,
+.earth .sidebar,
+.earth #distance > * {
+  background-color: #444444;
+}
+
+.earth #buttons > *:hover,
+.earth .sidebar > *:active {
+  background-color: #222222;
+}
+
+.sidebar {
+  position: fixed;
+  z-index: 2;
+  left: 15px;
+  top: 100px;
+  display: flex;
+  flex-direction: column;
+  background-color: #666666;
+  box-shadow: 0px 6px 10px -2px #555555;
+  border: 2px solid white;
+  border-radius: 4px;
+}
+
+.sidebar * {
+  background-color: transparent;
+  font-size: 30pt;
+  color: white;
+  padding: 18px;
+  margin: 0px;
+  border: none;
+}
+
+.sidebar *:not(:last-child) {
+  font-weight: bold;
+}
+
+.sidebar *:active {
+  background-color: #444444;
+}
+
+.hideElement {
+  display: none;
+}
+
+
+/*Main and image/map styles*/
+main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow: hidden;
 }
 
-.background{
-  fill: #EEEEEE;
+#page main {
+  margin-top: 100px;
 }
 
-.building {
-  fill: #bbbbbb;
+#result main {
+  margin-top: 108px;
+}
+
+
+/*Continued SVG and image styling*/
+svg {
+  z-index: 1;
+  margin-bottom: 40px;
+}
+
+.earth .path,
+.earth .block,
+.earth .buildingShadow,
+.earth .dummyShadow {
+  opacity: 0%;
+}
+
+.earth .building,
+.earth .lot,
+.earth .dummy {
+  fill: rgba(0, 0, 0, 0);
+  stroke: none;
+  opacity: 60%;
+}
+
+img {
+  position: absolute;
+  z-index: 0;
+  display: none;
+}
+
+.earth img {
+  display: block;
+  box-shadow: 0px 10px 10px 10px #555555;
+}
+
+
+#page .structure,
+#page .lot,
+#page .classroom {
+  cursor: pointer;
+}
+
+.building,
+.dummy {
+  fill: url(#buildingGradient);
   stroke: black;
   stroke-width: 0.5;
 }
 
-.buildingShadow {
-  fill: #999999;
+.buildingShadow,
+.dummyShadow {
+  fill: #666666;
   stroke: black;
   stroke-width: 0.5;
 }
 
-.structure:hover .building {
-  fill: green;
+#page .structure:hover .buildingShadow,
+#page .lot:hover,
+#page .structure:hover .building {
+  stroke: #00a8e2;
 }
 
-.structure:hover .buildingShadow {
-  fill: darkgreen;
+.earth .structure:hover .buildingShadow,
+.earth .lot:hover,
+.earth .structure:hover .building {
+  stroke-width: 1;
 }
 
-.sourceActive .building, .sourceActive .lot {
-  fill: green;
+.sourceActive .building,
+.sourceActive .lot{
+  fill: url(#sourceGradient);
+  stroke: #00a8e2;
 }
 
 .sourceActive .buildingShadow {
-  fill: darkgreen;
+  fill: #320e45;
+  stroke: #00a8e2;
 }
 
 .destinationActive .building,
-.destinationActive .lot {
-  fill: red;
+.destinationActive .lot{
+  fill: url(#destinationGradient);
+  stroke: #00a8e2;
 }
 
 .destinationActive .buildingShadow {
-  fill: maroon;
+  fill: #57462a;
+  stroke: #00a8e2;
 }
 
+.buildingInterior .building {
+  fill: url(#buildingGradient);
+  opacity: 100%;
+  stroke: #00a8e2;
+  stroke-width: 0.5;
+}
 
 .path {
   fill: none;
   stroke: white;
 }
 
-.pathOutline {
-  fill: none;
-  stroke: black;
+.block {
+  fill: white;
+  stroke: none;
 }
 
 .lot {
   fill: white;
-  stroke: black;
-  stroke-width: 0.5;
-}
-
-.lot:hover {
-  fill: green;
 }
 
 .route {
   fill: none;
-  stroke: lightseagreen;
+  stroke: none;
+}
+
+.routeBubbles {
+  stroke: #00a8e2;
   stroke-width: 2;
+  fill: white;
 }
 
-fieldset {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  background-color: none;
+.classroom,
+.dummyClass {
+  fill: url(#classroomGradient);
+  stroke-width: 0.1;
+  stroke: #00a8e2;
 }
 
-fieldset>*{
-  margin-right: 20px;
-  padding: 5px;
+#page .classroom:hover {
+  fill: white;
 }
 
-select{
-  color: #510c76;
-  font-weight: bold;
-  font-size: 12pt;
-  border: none;
-  border-radius: 4px;
-  padding: 10px;
-  appearance: none;
+.sourceClassActive {
+  fill: url(#sourceGradient);
+  stroke: #00a8e2;
 }
 
-input[type="submit"], input[type="reset"]{
-  border: none;
-  color: #510c76;
-  padding: 8px;
-  background-color: white;
-  font-weight: bold;
-  font-size: 12pt;
-  border: 1px solid #510c76;
+.destinationClassActive {
+  fill: url(#destinationGradient);
+  stroke: #00a8e2;
 }
 
-select:focus {
- outline: none;
+/**Media queries to allow views on smaller webpage screens, although 
+the website does not support views for mobile-sized screening*/
+@media only screen and (max-width: 1300px) {
+  #source h1,
+  #destination h1 {
+    font-size: 23pt;
+  }
+
+  select{
+    font-size: 11pt;
+  }
 }
 
-.sidebar{
-  position: fixed;
-  z-index: 1;
-  right: 15px;
-  top: 75px;
-  display: flex;
-  flex-direction: column;
-  background-color: white;
-  border: 2px solid #510c76;
+@media only screen and (max-width: 1150px) {
+  #source, #destination{
+    width: 45%;
+  }
+
+  #source h1,
+  #destination h1 {
+    display: none;
+  }
+
+  select{
+    font-size: 12pt;
+  }
+
+  #buttons{
+    flex-direction: column;
+    width: 18%;
+    left: 41%;
+  }
+
+  #buttons>*{
+    font-size: 9pt;
+    padding: 5px;
+  }
 }
 
-.sidebar *{
-  font-weight: bold;
-  font-size: 25pt;
-  color: #510c76;
-  padding: 18px;
-  margin: 0px;
-  background-color: white;
-  border: none;
-}
+@media only screen and (max-width: 750px) {
+  select{
+    font-size: 10pt;
+  }
 
+  .sidebar * {
+    font-size: 20pt;
+    padding: 12px;
+  }
+
+  #source h2,
+#destination h2 {
+  font-size: 15pt;
+}
+}
