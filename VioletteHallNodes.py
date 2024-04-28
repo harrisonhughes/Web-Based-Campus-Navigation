@@ -1,3 +1,13 @@
+"""
+Developer: Harrison Hughes, Truman State University 2024
+
+Creates a dictionary of all Violette Hall location entryways, and path intersections. Each location is represented
+by a string key and a list of tuples that correspond to the entry/exit coordinates of that specific classroom
+on the SVG file. Every other dictionary entry corresponds to a specific node on the comprehensive building path network, 
+either as a door or intersection amongst paths. This file is to be called by AStar.py to serve as the 
+data with which to operate on when either the source or destination object is specified as Violette Hall.
+"""
+
 nodes = {}
 #Entrances
 nodes[(708,703)] = ['l -2,0', 'l14,0']
@@ -101,7 +111,7 @@ nodes[(725,663.75)] = ['l5,0']
 nodes[(722,703)] = ['l-14,0', 'l18.25,0', 'l0,7']
 nodes[(740.25,703)] = ['l-18.25,0', 'l0,4.5', 'l0,-17']
 nodes[(740.25,707.5)] = ['l0,-4.5', 'l3.75,7', 'l0,7']
-nodes[(744,714.5)] = ['l-3.75,0', 'l-3.75,-7']
+nodes[(744,714.5)] = ['l-3.75,0', 'l-3.75,-7', 'l0,1']
 nodes[(740.25,714.5)] = ['l3.75,0', 'l0,-7', 'l0,8']
 nodes[(740.25,722.5)] = ['l8.25,8.5', 'l0,-8', 'l0,6.75']
 nodes[(740.25,729.25)] = ['l0,-6.75', 'l-3.75,0', 'l1.25,1.75']

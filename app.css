@@ -1,16 +1,26 @@
 @font-face {
-  font-family: 'Hurme Geometric Sans 1 Bold';
-  src: url('HurmeGeometricSans1 Bold.otf') format('truetype');
+  font-family: "Hurme Geometric Sans 1 Bold";
+  src: url("HurmeGeometricSans1 Bold.otf") format("truetype");
 }
 
+/**Main structural element styles*/
 html {
   height: 100%;
-  background-color: #DDDDDD;
-  font-family: 'Hurme Geometric Sans 1 Bold', sans-serif;
+  background-image: linear-gradient(90deg, #d8cedc, #d5cab9); 
+  background-attachment: fixed;
+  font-family: "Hurme Geometric Sans 1 Bold", sans-serif;
 }
 
-.earth{
+.earth {
+  background-image: none;
   background-color: #999999;
+}
+
+/**Header block styling*/
+fieldset {
+  border: none;
+  background-color: none;
+  padding: 0px;
 }
 
 #source,
@@ -21,26 +31,25 @@ html {
   align-items: center;
   top: 10px;
   width: 42%;
-  height: 9%;
+  height: 70px;
   z-index: 2;
   margin: 0px;
   border: 2px solid white;
   box-shadow: 0px 6px 10px 0px #555555;
 }
 
-#source{
+#source {
   left: -50%;
   border-radius: 0px 20px 20px 0px;
-  background-image: linear-gradient(to right, #510c76, #792da2);
+  background-image: linear-gradient(to right, #510c76, #8a3cb5);
   justify-content: flex-start;
   animation: flyInAnimation 1s forwards;
 }
 
-.destinationResult{
+.destinationResult {
   right: -50%;
   animation: flyInRight 1s forwards;
 }
-
 
 /* Define the keyframes for the animation */
 @keyframes flyInAnimation {
@@ -64,16 +73,16 @@ html {
 
 #destination {
   border-radius: 20px 0px 0px 20px;
-  background-image: linear-gradient(to right, #b48f52, #87714D);
+  background-image: linear-gradient(to right, #b48f52, #87714d);
   justify-content: flex-end;
   transition: right 1s ease;
 }
 
-.destinationHide{
-  right:-50%;
+.destinationHide {
+  right: -50%;
 }
 
-.destinationTransition{
+.destinationTransition {
   right: 0;
 }
 
@@ -81,7 +90,6 @@ html {
 #destinationSelect {
   display: flex;
   flex-direction: row;
-  align-items: center;
   margin: 0 auto;
 }
 
@@ -91,37 +99,59 @@ html {
   font-size: 27pt;
 }
 
-#source h1{
+#source h1 {
   margin-left: 30px;
 }
 
-#destination h1{
+#destination h1 {
   margin-right: 30px;
 }
 
-#source h2, #destination h2{
+#source h2,
+#destination h2 {
   color: white;
   margin: 15px;
   font-size: 20pt;
 }
 
 select {
-  font-family: 'Hurme Geometric Sans 1 Bold', sans-serif;
+  font-family: "Hurme Geometric Sans 1 Bold", sans-serif;
   color: white;
   background-color: transparent;
   height: 30px;
-  font-size: 11pt;
+  font-size: 13pt;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  margin-inline: 15px;
+  margin-inline: 8px;
+  padding-inline: 5px 8px;
 }
 
-option{
-  color: #510c76;
+select:focus {
+  outline: none;
 }
 
-#buttons, #distance {
+option {
+  color: white;
+}
+
+.optionHeader {
+  color: #00a8e2;
+  text-align: center;
+}
+
+#destinationSelect option {
+  background-color: #87714d;
+}
+
+#sourceSelect option {
+  background-color: #510c76;
+}
+
+
+/**Header buttons, sidebar buttons, and distance block styles*/
+#buttons,
+#distance {
   position: fixed;
   display: flex;
   flex-direction: row;
@@ -132,19 +162,25 @@ option{
   padding: 0px;
 }
 
-#buttons{
+#buttons {
   width: 16%;
   left: 42%;
   height: 9%;
   top: 10px;
 }
 
-#distance{
+#distance {
   bottom: 10px;
 }
 
-#buttons>*, #distance>*{
-  font-family: 'Hurme Geometric Sans 1 Bold', sans-serif;
+#distance,
+.sidebar {
+  opacity: 85%;
+}
+
+#buttons > *,
+#distance > * {
+  font-family: "Hurme Geometric Sans 1 Bold", sans-serif;
   border: none;
   color: white;
   background-color: #666666;
@@ -157,182 +193,29 @@ option{
   box-shadow: 0px 6px 10px -2px #555555;
 }
 
-#buttons>*{
+#buttons > * {
   width: 35%;
   min-width: 50px;
   cursor: pointer;
 }
 
-#distance>*{
+#distance > * {
   font-size: 15pt;
 }
 
-#buttons>*:hover{
-background-color: #444444;
-}
-
-.earth #buttons>*, .earth .sidebar, .earth #distance>*{
+#buttons > *:hover {
   background-color: #444444;
 }
 
-.earth #buttons>*:hover, .earth .sidebar>*:active{
+.earth #buttons > *,
+.earth .sidebar,
+.earth #distance > * {
+  background-color: #444444;
+}
+
+.earth #buttons > *:hover,
+.earth .sidebar > *:active {
   background-color: #222222;
-}
-
-.hideElement{
-  display: none;
-}
-
-
-main{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-#page main{
-  margin-top: 100px;
-}
-
-#result main{
-  margin-top: 108px;
-}
-
-svg{
-  z-index: 1;
-  margin-bottom: 40px;
-}
-
-fieldset{
-padding: 0px;
-}
-
-.earth .path, .earth .block, .earth .buildingShadow, .earth .dummyShadow{
-  opacity: 0%;
-}
-
-.earth .building, .earth .lot, .earth .dummy{
-  fill: rgba(0,0,0,0);
-  stroke: none;
-  opacity: 60%;
-}
-
-.earth .classroom, .earth .dummyClass{
-  opacity: 75%;
-}
-
-img{
-  position: absolute;
-  z-index: 0;
-  display: none;
-}
-
-.earth img{
-  display:block;
-  box-shadow: 0px 10px 10px 10px #555555;
-}
-
-
-.earth .background {
-  fill: none;
-}
-
-.background{
-  fill: #DDDDDD;
-}
-
-#page .structure, #page .lot, #page .classroom{
-  cursor: pointer;
-}
-
-.building, .dummy {
-  fill: url(#buildingGradient);
-  stroke: black;
-  stroke-width: 0.5;
-}
-
-.buildingShadow, .dummyShadow {
-  fill: url(#buildingShadowGradient);
-  stroke: black;
-  stroke-width: 0.5;
-}
-
-#page .structure:hover .buildingShadow, #page .lot:hover, #page .structure:hover .building{
-  stroke: #00A8E2;
-  stroke-width: 1;
-}
-
-.sourceActive .building, .earth .sourceActive .building,
-.sourceActive .lot, .earth .sourceActive .lot{
-  fill: url(#sourceGradient);
-  stroke:#00A8E2;
-}
-
-.sourceActive .buildingShadow {
-  fill: #320e45;
-  stroke:#00A8E2;
-}
-
-.destinationActive .building, .earth .destinationActive .building,
-.destinationActive .lot, .earth .destinationActive .lot {
-  fill: url(#destinationGradient);
-  stroke:#00A8E2;
-}
-
-.destinationActive .buildingShadow {
-  fill: #57462a;
-  stroke:#00A8E2;
-}
-
-
-.path {
-  fill: none;
-  stroke: white;
-}
-
-.block{
-  fill: white;
-  stroke: none;
-}
-
-.pathOutline{
-  fill: none;
-  stroke: none;
-}
-
-.blockOutline{
-  stroke: none;
-  fill: none;
-  stroke-width: 0.4;
-}
-
-.lot{
-  fill: white;
-}
-
-text{
-  font-size: 2pt;
-  fill: #00A8E2;
-}
-
-.route {
-  fill: none;
-  stroke: none;
-}
-
-.routeBubbles{
-stroke:#00A8E2;
-stroke-width: 2;
-fill:none;
-}
-
-fieldset {
-  border: none;
-  background-color: none;
-}
-
-select:focus {
-  outline: none;
 }
 
 .sidebar {
@@ -345,38 +228,238 @@ select:focus {
   background-color: #666666;
   box-shadow: 0px 6px 10px -2px #555555;
   border: 2px solid white;
-
+  border-radius: 4px;
 }
 
 .sidebar * {
   background-color: transparent;
-  font-weight: bolder;
-  font-size: 25pt;
+  font-size: 30pt;
   color: white;
   padding: 18px;
   margin: 0px;
   border: none;
 }
 
-.sidebar *:active{
-  background-color:#444444;
+.sidebar *:not(:last-child) {
+  font-weight: bold;
 }
 
-.classroom, .dummyClass {
+.sidebar *:active {
+  background-color: #444444;
+}
+
+.hideElement {
+  display: none;
+}
+
+
+/*Main and image/map styles*/
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#page main {
+  margin-top: 100px;
+}
+
+#result main {
+  margin-top: 108px;
+}
+
+
+/*Continued SVG and image styling*/
+svg {
+  z-index: 1;
+  margin-bottom: 40px;
+}
+
+.earth .path,
+.earth .block,
+.earth .buildingShadow,
+.earth .dummyShadow {
+  opacity: 0%;
+}
+
+.earth .building,
+.earth .lot,
+.earth .dummy {
+  fill: rgba(0, 0, 0, 0);
+  stroke: none;
+  opacity: 60%;
+}
+
+img {
+  position: absolute;
+  z-index: 0;
+  display: none;
+}
+
+.earth img {
+  display: block;
+  box-shadow: 0px 10px 10px 10px #555555;
+}
+
+
+#page .structure,
+#page .lot,
+#page .classroom {
+  cursor: pointer;
+}
+
+.building,
+.dummy {
+  fill: url(#buildingGradient);
+  stroke: black;
+  stroke-width: 0.5;
+}
+
+.buildingShadow,
+.dummyShadow {
+  fill: #666666;
+  stroke: black;
+  stroke-width: 0.5;
+}
+
+#page .structure:hover .buildingShadow,
+#page .lot:hover,
+#page .structure:hover .building {
+  stroke: #00a8e2;
+}
+
+.earth .structure:hover .buildingShadow,
+.earth .lot:hover,
+.earth .structure:hover .building {
+  stroke-width: 1;
+}
+
+.sourceActive .building,
+.sourceActive .lot{
+  fill: url(#sourceGradient);
+  stroke: #00a8e2;
+}
+
+.sourceActive .buildingShadow {
+  fill: #320e45;
+  stroke: #00a8e2;
+}
+
+.destinationActive .building,
+.destinationActive .lot{
+  fill: url(#destinationGradient);
+  stroke: #00a8e2;
+}
+
+.destinationActive .buildingShadow {
+  fill: #57462a;
+  stroke: #00a8e2;
+}
+
+.buildingInterior .building {
+  fill: url(#buildingGradient);
+  opacity: 100%;
+  stroke: #00a8e2;
+  stroke-width: 0.5;
+}
+
+.path {
+  fill: none;
+  stroke: white;
+}
+
+.block {
+  fill: white;
+  stroke: none;
+}
+
+.lot {
+  fill: white;
+}
+
+.route {
+  fill: none;
+  stroke: none;
+}
+
+.routeBubbles {
+  stroke: #00a8e2;
+  stroke-width: 2;
+  fill: white;
+}
+
+.classroom,
+.dummyClass {
   fill: url(#classroomGradient);
-  stroke-width: 0.3;
+  stroke-width: 0.1;
+  stroke: #00a8e2;
 }
 
 #page .classroom:hover {
-  stroke: #00A8E2;
+  fill: white;
 }
 
-.sourceClassActive{
+.sourceClassActive {
   fill: url(#sourceGradient);
-  stroke:#00A8E2;
+  stroke: #00a8e2;
 }
 
-.destinationClassActive{
+.destinationClassActive {
   fill: url(#destinationGradient);
-  stroke:#00A8E2;
+  stroke: #00a8e2;
+}
+
+/**Media queries to allow views on smaller webpage screens, although 
+the website does not support views for mobile-sized screening*/
+@media only screen and (max-width: 1300px) {
+  #source h1,
+  #destination h1 {
+    font-size: 23pt;
+  }
+
+  select{
+    font-size: 11pt;
+  }
+}
+
+@media only screen and (max-width: 1150px) {
+  #source, #destination{
+    width: 45%;
+  }
+
+  #source h1,
+  #destination h1 {
+    display: none;
+  }
+
+  select{
+    font-size: 12pt;
+  }
+
+  #buttons{
+    flex-direction: column;
+    width: 18%;
+    left: 41%;
+  }
+
+  #buttons>*{
+    font-size: 9pt;
+    padding: 5px;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  select{
+    font-size: 10pt;
+  }
+
+  .sidebar * {
+    font-size: 20pt;
+    padding: 12px;
+  }
+
+  #source h2,
+#destination h2 {
+  font-size: 15pt;
+}
 }
