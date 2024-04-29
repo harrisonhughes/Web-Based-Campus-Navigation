@@ -13,7 +13,7 @@
     return $string;
   }
 
-  //Inidcator for a route diretly to a building instead of inside
+  //Indicator for a route directly to a building instead of inside
   $NO_CLASSROOM = -1;
 
   //A submission from app.php has been placed
@@ -152,6 +152,7 @@
         <button type="button" id="changeView">&#x1F441</h1>
       </div>
       <img id="picture" src="Earth.png">
+      <!--Magic Numbers to specify the total height and width of the SVG file-->
       <svg id="map" width="100%" height="100%" viewBox="0 0 1093 1117" preserveAspectRatio="xMidYMid meet" >
         <defs>
         <linearGradient id="buildingGradient">
@@ -174,6 +175,7 @@
         <?php
             //Draw all map paths based on specifications from file
             foreach($paths as $path){
+
               //If current row doesn't begin with a comment symbol
               if($path[0][0] != '#'){
                 echo "<path transform='translate({$path[1]},{$path[2]})'
@@ -185,6 +187,7 @@
         
             //Draw all irregular map shapes based on specifications from file
             foreach($blocks as $block){
+
               //If current row doesn't begin with a comment symbol
               if($block[0][0] != '#'){
                 echo "<path transform='translate({$block[0]},{$block[1]})'

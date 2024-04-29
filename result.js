@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var scrollX = localStorage.getItem('scrollX');
     var scrollY = localStorage.getItem('scrollY');
   
-    //Scroll to ssaved position
+    //Scroll to saved position
     if (scrollX !== null && scrollY !== null) {
         window.scrollTo(scrollX, scrollY);
     }
@@ -117,7 +117,7 @@ function handleZoom() {
     width = bounds.width / ZOOM_RATIO;
     var focus = calculateFocus();
 
-    //Update translate as images continue to need less translation to stay on screem
+    //Update translate as images continue to need less translation to stay on n
     leftTranslate = width - window.innerWidth;
     if (leftTranslate > 0) {
       map.style.marginLeft = leftTranslate + "px";
@@ -198,7 +198,7 @@ function loadFocus(shiftX, shiftY){
 }
 
 /**
- * Set the current view to the stored specificaiton and interact with the view change button
+ * Set the current view to the stored specification and interact with the view change button
  * to comply with the user requested view between digital and satellite 
  */
 function handleView(){

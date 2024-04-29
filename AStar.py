@@ -17,7 +17,7 @@ import json
 class Node:
     """
     To define the unit of which the overall graph will operate over. This node class
-    is designed to hold all necessary informaiton for an A** search algorithm to 
+    is designed to hold all necessary information for an A** search algorithm to 
     operate under
     """
     
@@ -173,7 +173,7 @@ class AStarSearch:
                         #Get index of the new node within the discovered list
                         repeatNodeIx = self.discovered.index(newNode)
                         
-                        #If out current path to the new node is quicker than the old one, we must replace it within our discovered
+                        #If our current path to the new node is quicker than the old one, we must replace it within our discovered
                         #list with the current route. This ensures we store the optimal route to all nodes at all times
                         if self.discovered[repeatNodeIx].totalLen > newNode.totalLen:
                             self.discovered[repeatNodeIx] = newNode
