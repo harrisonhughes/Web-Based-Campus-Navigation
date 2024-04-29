@@ -1,3 +1,8 @@
+/**
+ * Harrison Hughes, Truman State University 2024
+ * This file coordinates all client-side programming functionalities for the app.php file
+ */
+
 const ZOOM_RATIO = 1.2;
 const WIDTH_HEIGHT_RATIO = 1117/1093;
 

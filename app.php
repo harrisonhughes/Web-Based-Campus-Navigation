@@ -1,4 +1,11 @@
 <?php
+/**
+ * Harrison Hughes, Truman State University 2024
+ * Displays a comprehensive map of Truman State and allows the user to select or click any two
+ * campus locations (buildings, lots) to proceed to search for the optimal route between the 
+ * two locations
+ */
+
   //Clean form entries to prevent html script injection attacks
   function test_input($string) {
     $string = trim($string);
