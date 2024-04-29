@@ -46,7 +46,7 @@ thus pointing the stack directly at the application you just downloaded. Be sure
 Note: you will need the 'Apache Server' to turn green in order to proceed, but the 'MySQL Server' and 'Cloud' indicator need not be active. 
 
 ### Step 5 - Install SVGPathTools and Begin Searching
-The final step is to download the necessary Python library 'SVGPathTools' to ensure the Python file has the necessary dependencies to run. This can be accomplished most simply through the Python package manager 'pip'. This is as easy as  
+The final step is to download the Python library 'SVGPathTools' to ensure the Python file has the necessary dependencies to run. This can be accomplished most simply through the Python package manager 'pip'. This is as easy as  
 
 $ pip install svgpathtools  
   
