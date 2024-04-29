@@ -1,6 +1,6 @@
 <?php
 /**
- * Harrison Hughes, Truman State University 2024
+ * Developer: Harrison Hughes, Truman State University 2024
  * Displays a comprehensive map of Truman State with an optimal route generated from
  * the user selection made in the app.php file
  */

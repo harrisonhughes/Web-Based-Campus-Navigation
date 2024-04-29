@@ -1,5 +1,5 @@
 /**
- * Harrison Hughes, Truman State University 2024
+ * Developer: Harrison Hughes, Truman State University 2024
  * This file coordinates all client-side programming functionalities for the result.php file
  */
 
