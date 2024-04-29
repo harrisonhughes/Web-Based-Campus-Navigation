@@ -6,7 +6,7 @@
 /**Main structural element styles*/
 html {
   height: 100%;
-  background-image: linear-gradient(90deg, #d8cedc, #d5cab9); 
+  background-image: linear-gradient(90deg, #d8cedc, #d5cbbb); 
   background-attachment: fixed;
   font-family: "Hurme Geometric Sans 1 Bold", sans-serif;
 }
