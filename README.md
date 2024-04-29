@@ -5,7 +5,7 @@ This application provides a comprehensive view of Truman State's campus both dig
 ## Programs and Dependencies
 Tech:   
 -Local Web Server (Apache Recommended)  
--Python (3.11.0+ Recommended)
+-Python (3.11.0+ Recommended)  
 -PHP (8.0+ Recommended)  
 -JavaScript  
 -CSS  
