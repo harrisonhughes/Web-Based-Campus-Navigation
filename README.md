@@ -34,7 +34,7 @@ in order to download the application itself to the correct location. By now, you
 
 https://www.python.org/downloads/
   
-and downlaoding at least Python version 3.11.0 or sooner. This should also automatically download the Python package manager 'pip' which will be needed later. 
+and downlaoding at least Python version 3.11.0. This should also automatically download the Python package manager 'pip' which will be needed later. 
 
 ### Step 4 - Connect the Application to MAMP
 Now, in the MAMP dashboard (again, the small initial interface that displays server status), click on the MAMP heading at the top of the page, and select 'Preferences'. You should now be given the option to provide 'My favorite link', which must be selected from the htdocs folder. In this text box, write in  
