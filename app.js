@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var scrollX = localStorage.getItem('scrollX');
     var scrollY = localStorage.getItem('scrollY');
   
-    //Scroll to ssaved position
+    //Scroll to saved position
     if (scrollX !== null && scrollY !== null) {
         window.scrollTo(scrollX, scrollY);
     }
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
 /**
 * Updates both select box and class specifications of a location upon its click.
   This includes maintaining proper source and destination objects, ensuring 
-  responsivness from select box, and preventing more than 2 active objects at a time.
+  responsiveness from select box, and preventing more than 2 active objects at a time.
 */
 function updateOnClick(){
   const buildings = document.querySelectorAll('.structure');
@@ -285,7 +285,7 @@ function handleZoom() {
     width = bounds.width / ZOOM_RATIO;
     var focus = calculateFocus();
 
-    //Update translate as images continue to need less translation to stay on screem
+    //Update translate as images continue to need less translation to stay on screen
     leftTranslate = width - window.innerWidth;
     if (leftTranslate > 0) {
       map.style.marginLeft = leftTranslate + "px";
@@ -366,7 +366,7 @@ function loadFocus(shiftX, shiftY){
 }
 
 /**
- * Set the current view to the stored specificaiton and interact with the view change button
+ * Set the current view to the stored specification and interact with the view change button
  * to comply with the user requested view between digital and satellite 
  */
 function handleView(){
